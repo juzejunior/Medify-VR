@@ -41,6 +41,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:17.0.0'
     implementation 'com.firebaseui:firebase-ui-auth:5.0.0'
     implementation 'com.google.firebase:firebase-firestore:20.1.0'
+    implementation 'com.google.firebase:firebase-core:17.0.0'
 
     //video 3d
     implementation 'com.google.vr:sdk-videowidget:1.180.0'

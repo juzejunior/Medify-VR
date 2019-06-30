@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initElements() {
         mRecyclerView = findViewById<View>(R.id.rvPatients) as RecyclerView
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this)
         // use a linear layout manager
         mLayoutManager = LinearLayoutManager(this)
         mRecyclerView!!.layoutManager = mLayoutManager
