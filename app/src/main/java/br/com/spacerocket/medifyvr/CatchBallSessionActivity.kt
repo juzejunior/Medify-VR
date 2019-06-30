@@ -12,7 +12,6 @@ import java.io.IOException
 import java.util.*
 import javax.microedition.khronos.egl.EGLConfig
 
-
 // Implementing the Runnable interface to implement threads.
 class SimpleRunnable: Runnable {
     public override fun run() {
@@ -121,7 +120,7 @@ class CatchBallSessionActivity : GvrActivity(), GvrView.StereoRenderer  {
     @Volatile
     private var successSourceId = GvrAudioEngine.INVALID_ID
 
-    private var MINIMAL_TIMER_TO_DISSEPEAR: Long = 300
+    private var MINIMAL_TIMER_TO_DISSEPEAR: Long = 250
     /**
      * Sets the view to our GvrView and initializes the transformation matrices we will use
      * to render our scene.
