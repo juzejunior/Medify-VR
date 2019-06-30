@@ -38,12 +38,14 @@
                   android:layout_height="wrap_content"
                   android:id="@+id/patientNameET"
                   android:hint="Nome do Paciente*"
+                  android:inputType="textPersonName"
         />
 
         <EditText
                 android:id="@+id/patientPhoneET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="phone"
                 android:hint="Telefone"
             />
 

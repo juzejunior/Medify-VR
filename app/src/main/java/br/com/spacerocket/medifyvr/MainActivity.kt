@@ -4,7 +4,6 @@ import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
@@ -13,16 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.spacerocket.medifyvr.adapter.PatientAdapter
 import com.firebase.ui.auth.AuthUI
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 import kotlinx.android.synthetic.main.activity_main.*
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.dialog_light.bt_keep
 import kotlinx.android.synthetic.main.dialog_register_patient.*
-import com.google.firebase.firestore.QueryDocumentSnapshot
-
-
+import io.cubos.r2d2lib.insertMask
 
 
 class MainActivity : AppCompatActivity() {
@@ -139,6 +135,8 @@ class MainActivity : AppCompatActivity() {
             lp.copyFrom(dialog.window!!.attributes)
             lp.width = WindowManager.LayoutParams.WRAP_CONTENT
             lp.height = WindowManager.LayoutParams.WRAP_CONTENT
+
+            dialog.patientPhoneET.insertMask("(##) #####-####")
 
             dialog.bt_keep.setOnClickListener {
                 if (dialog.patientNameET.getText().toString() == "") {

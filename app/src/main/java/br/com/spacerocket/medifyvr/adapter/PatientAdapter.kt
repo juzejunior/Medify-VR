@@ -12,6 +12,7 @@ import br.com.spacerocket.medifyvr.MainActivity
 
 import br.com.spacerocket.medifyvr.Paciente
 import br.com.spacerocket.medifyvr.R
+import io.cubos.r2d2lib.addCpfMask
 
 /**
  *
