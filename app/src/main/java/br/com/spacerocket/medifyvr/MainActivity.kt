@@ -1,19 +1,29 @@
 package br.com.spacerocket.medifyvr
 
+import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.spacerocket.medifyvr.adapter.PatientAdapter
 import com.firebase.ui.auth.AuthUI
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.*
 import kotlinx.android.synthetic.main.activity_main.*
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.dialog_light.bt_keep
+import kotlinx.android.synthetic.main.dialog_register_patient.*
+import com.google.firebase.firestore.QueryDocumentSnapshot
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,9 +53,37 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getPatients() {
+
         db.collection("pacientes")
-            .get()
-            .addOnCompleteListener { task ->
+            .addSnapshotListener(object : EventListener<QuerySnapshot> {
+                override fun onEvent(qs: QuerySnapshot?, erro: FirebaseFirestoreException?) {
+                    patients.clear()
+                    indeterminateBar.visibility = View.INVISIBLE
+                    if (erro != null) {
+                        return
+                    }
+
+                    for (doc in qs!!) {
+                      if (doc.get("idMedico") == auth.currentUser?.uid) {
+                         var patient: Paciente = Paciente()
+                          patient.nome = (doc.get("nome") as String)
+                          patient.telefone = (doc.get("telefone") as String)
+                          patient.idMedico = (doc.get("idMedico") as String)
+                          patients.add(patient)
+                      }
+                    }
+                    totalPatientsTV.text = patients.size.toString()
+                    if (patients.isEmpty()) {
+                        noPatientsRL.visibility = View.VISIBLE
+                        rvPatients.visibility = View.GONE
+                    } else {
+                        noPatientsRL.visibility = View.GONE
+                        rvPatients.visibility = View.VISIBLE
+                    }
+                    mAdapter?.notifyDataSetChanged()
+                }
+            })
+            /*.addOnCompleteListener { task ->
                 indeterminateBar.visibility = View.INVISIBLE
                 if (task.isSuccessful) {
                     for (document in task.result!!) {
@@ -68,7 +106,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     Log.d("ERRO GET PATIENTS", "Error getting documents: ", task.exception)
                 }
-            }
+            }*/
     }
 
     fun goToChooseProcedureScreen(patient: Paciente) {
@@ -89,6 +127,49 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Até mais!", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, LoginActivity::class.java))
                 }
+        }
+
+        fabBTN.setOnClickListener {
+            val dialog = Dialog(this)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE) // before
+            dialog.setContentView(R.layout.dialog_register_patient)
+            dialog.setCancelable(true)
+
+            val lp = WindowManager.LayoutParams()
+            lp.copyFrom(dialog.window!!.attributes)
+            lp.width = WindowManager.LayoutParams.WRAP_CONTENT
+            lp.height = WindowManager.LayoutParams.WRAP_CONTENT
+
+            dialog.bt_keep.setOnClickListener {
+                if (dialog.patientNameET.getText().toString() == "") {
+                    Toast.makeText(this, "Ops! Você esqueceu de informar o nome do paciente!", Toast.LENGTH_SHORT).show()
+                } else {
+                    val data = HashMap<String, Any>()
+                    var phone = ""
+                    if (dialog.patientPhoneET.getText().toString() != "") {
+                       phone  = dialog.patientPhoneET.getText().toString()
+                    }
+                    data.put("nome", dialog.patientNameET.getText().toString())
+                    data.put("telefone", dialog.patientPhoneET.getText().toString())
+                    data.put("idMedico", auth.currentUser!!.uid)
+
+                    db.collection("pacientes").add(data)
+                        .addOnSuccessListener {
+                            dialog.dismiss()
+                            Toast.makeText(this@MainActivity, "Novo paciente adicionado!", Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(this, "Opa ocorreu um erro, tente novamente!", Toast.LENGTH_SHORT).show()
+                        }
+                }
+            }
+
+            dialog.bt_close.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            dialog.show()
+            dialog.window!!.attributes = lp
         }
     }
 }

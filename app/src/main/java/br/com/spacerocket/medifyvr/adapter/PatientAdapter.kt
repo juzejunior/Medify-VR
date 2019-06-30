@@ -51,7 +51,7 @@ class PatientAdapter(private val mContext: Context, listPatient: ArrayList<Pacie
         val patient = listPatient[position]
 
         holder.tvNamePatient.text = patient.nome
-        holder.tvBirthDatePatient.text = patient.data_nascimento
+        holder.tvBirthDatePatient.text = patient.telefone
 
         holder.linearLayoutView.setOnClickListener {
             if (mContext is MainActivity) {
