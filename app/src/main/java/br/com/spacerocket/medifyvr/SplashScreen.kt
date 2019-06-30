@@ -11,11 +11,11 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
         val handle = Handler()
-        handle.postDelayed({ goToMain() }, 2000)
+        handle.postDelayed({ goToLogin() }, 2000)
     }
 
-    private fun goToMain() {
-        val intentLogin = Intent(this, MainActivity::class.java)
+    private fun goToLogin() {
+        val intentLogin = Intent(this, LoginActivity::class.java)
         startActivity(intentLogin)
         finish()
     }

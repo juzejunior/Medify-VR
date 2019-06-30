@@ -116,7 +116,7 @@
                         app:cardElevation="2dp">
 
                     <LinearLayout
-                            android:id="@+id/goToTreatmentsCard"
+                            android:id="@+id/exitBTN"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
@@ -130,7 +130,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_centerInParent="true"
-                                    android:tint="@color/indigo_400"
+                                    android:tint="@color/red_500"
                                     app:srcCompat="@drawable/shape_circle" />
 
                             <ImageView
@@ -138,7 +138,7 @@
                                     android:layout_height="20dp"
                                     android:layout_centerInParent="true"
                                     android:tint="@android:color/white"
-                                    app:srcCompat="@drawable/ic_heartbeat" />
+                                    app:srcCompat="@drawable/ic_logout" />
 
                         </RelativeLayout>
 
@@ -155,17 +155,11 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"
                                     android:layout_weight="1"
-                                    android:text="3"
+                                    android:layout_marginTop="10dp"
+                                    android:text="Sair"
                                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                                     android:textColor="@color/grey_60"
                                     android:textStyle="bold" />
-
-                            <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Tratamentos"
-                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                                    android:textColor="@color/grey_40" />
 
                         </LinearLayout>
 
@@ -198,60 +192,7 @@
                         app:cardCornerRadius="2dp"
                         app:cardElevation="2dp">
 
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/spacing_large">
 
-                        <RelativeLayout
-                                android:layout_width="40dp"
-                                android:layout_height="40dp">
-
-                            <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_centerInParent="true"
-                                    android:tint="@color/red_300"
-                                    app:srcCompat="@drawable/shape_circle" />
-
-                            <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:layout_centerInParent="true"
-                                    android:tint="@android:color/white"
-                                    app:srcCompat="@drawable/ic_shopping_basket" />
-
-                        </RelativeLayout>
-
-                        <View
-                                android:layout_width="@dimen/spacing_middle"
-                                android:layout_height="0dp" />
-
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                            <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="1"
-                                    android:text="10+"
-                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                                    android:textColor="@color/grey_60"
-                                    android:textStyle="bold" />
-
-                            <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Sessões"
-                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                                    android:textColor="@color/grey_40" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
@@ -271,60 +212,7 @@
                         app:cardCornerRadius="2dp"
                         app:cardElevation="2dp">
 
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/spacing_large">
 
-                        <RelativeLayout
-                                android:layout_width="40dp"
-                                android:layout_height="40dp">
-
-                            <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_centerInParent="true"
-                                    android:tint="@color/light_green_500"
-                                    app:srcCompat="@drawable/shape_circle" />
-
-                            <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:layout_centerInParent="true"
-                                    android:tint="@android:color/white"
-                                    app:srcCompat="@drawable/ic_calendar_with_a_clock_time_tools" />
-
-                        </RelativeLayout>
-
-                        <View
-                                android:layout_width="@dimen/spacing_middle"
-                                android:layout_height="0dp" />
-
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                            <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="1"
-                                    android:text="3"
-                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                                    android:textColor="@color/grey_60"
-                                    android:textStyle="bold" />
-
-                            <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Agenda"
-                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                                    android:textColor="@color/grey_40" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
@@ -333,6 +221,22 @@
             <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/spacing_middle" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <ProgressBar
+                        android:id="@+id/indeterminateBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminateTint="@color/colorPrimary"
+                        android:visibility="gone"
+                />
+            </LinearLayout>
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -487,6 +391,7 @@
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
+
 
             <View
                     android:layout_width="match_parent"

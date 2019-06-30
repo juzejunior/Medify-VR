@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "483252494627",
+    "firebase_url": "https://medify-vr.firebaseio.com",
+    "project_id": "medify-vr",
+    "storage_bucket": "medify-vr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483252494627:android:3f94d9f8a22e3b34",
+        "android_client_info": {
+          "package_name": "br.com.spacerocket.medifyvr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "483252494627-cnnpsgbkej1ckvt2l6dl1v5bt05i11hn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.spacerocket.medifyvr",
+            "certificate_hash": "8bfaa887fbf61a7b72ba7e9d76d841dc56d58d1b"
+          }
+        },
+        {
+          "client_id": "483252494627-rl9ovrb8iem02gcm1itlsoqt7ddmiljj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4ndwQNvBr5dxcEznj_CD0J4_CWYuZ87U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "483252494627-rl9ovrb8iem02gcm1itlsoqt7ddmiljj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
