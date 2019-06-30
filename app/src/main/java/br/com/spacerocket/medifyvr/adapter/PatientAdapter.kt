@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import br.com.spacerocket.medifyvr.MainActivity
 
 import br.com.spacerocket.medifyvr.Paciente
 import br.com.spacerocket.medifyvr.R
@@ -53,7 +54,9 @@ class PatientAdapter(private val mContext: Context, listPatient: ArrayList<Pacie
         holder.tvBirthDatePatient.text = patient.data_nascimento
 
         holder.linearLayoutView.setOnClickListener {
-
+            if (mContext is MainActivity) {
+                mContext.goToChooseProcedureScreen(patient)
+            }
         }
     }
 

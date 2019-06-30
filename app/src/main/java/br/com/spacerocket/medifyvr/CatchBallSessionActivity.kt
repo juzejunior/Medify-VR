@@ -6,6 +6,7 @@ import android.opengl.Matrix
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import com.google.gson.Gson
 import com.google.vr.sdk.audio.GvrAudioEngine
 import com.google.vr.sdk.base.*
 import java.io.IOException
@@ -356,14 +357,17 @@ class CatchBallSessionActivity : GvrActivity(), GvrView.StereoRenderer  {
                 Log.d("COUNT TIMER", "cont: "+targetLookingTimer)
                 if (targetLookingTimer == MINIMAL_TIMER_TO_DISSEPEAR) {
                     points++
-                    if (points == TARGET_MESH_COUNT) {
-                       var intent = Intent(this, ResultActivity::class.java)
-                       intent.putExtra("RESULT", points)
-                        startActivity(intent)
-                        finish()
-                    }
                     hideTarget()
                     targetLookingTimer = 0
+                    if (points == TARGET_MESH_COUNT) {
+                       var intentNew = Intent(this, ResultActivity::class.java)
+                       val patientString = intent.getStringExtra("PATIENT")
+                       // val patient = Gson().fromJson<Paciente>(patientString, Paciente::class.java)
+                        //intentNew.putExtra("PATIENT_NAME", patient.nome)
+                        intentNew.putExtra("RESULT", points)
+                        startActivity(intentNew)
+                        finish()
+                    }
                 }
             }
 

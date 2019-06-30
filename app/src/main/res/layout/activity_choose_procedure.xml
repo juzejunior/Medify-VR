@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ChooseProcedureActivity">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Escolha o Procedimento"
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:fontFamily="@font/museo_sans_500"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:layout_above="@+id/cardView"
+            android:layout_marginBottom="80dp"
+     />
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="2dp">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:src="@drawable/itens"
+                    android:scaleType="fitXY"
+                    android:background="@color/grey_20" />
+
+            <LinearLayout
+                    android:id="@+id/layout_dots"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xmlarge"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Coleta de Itens\nEstimulo do Vestibulo Ocular"
+                />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            android:id="@+id/startBTN"
+            android:layout_margin="16dp"
+            android:text="INICIAR!"
+            android:textColor="#ffffff"
+    />
+
+</RelativeLayout>

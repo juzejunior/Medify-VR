@@ -10,12 +10,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.spacerocket.medifyvr.adapter.PatientAdapter
 import com.firebase.ui.auth.AuthUI
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
 
     var db = FirebaseFirestore.getInstance()
+    var auth = FirebaseAuth.getInstance()
     var patients = ArrayList<Paciente>()
     private var mRecyclerView: RecyclerView? = null
     private var mLayoutManager: RecyclerView.LayoutManager? = null
@@ -48,13 +51,31 @@ class MainActivity : AppCompatActivity() {
                     for (document in task.result!!) {
                         Log.d("PATIENT", document.getId() + " => " + document.getData())
                         var patient: Paciente = document.toObject(Paciente::class.java)
-                        patients.add(patient)
+                        if (patient.idMedico == auth.currentUser?.uid) {
+                            patients.add(patient)
+                        }
+                    }
+
+                    totalPatientsTV.text = patients.size.toString()
+                    if (patients.isEmpty()) {
+                        noPatientsRL.visibility = View.VISIBLE
+                        rvPatients.visibility = View.GONE
+                    } else {
+                        noPatientsRL.visibility = View.GONE
+                        rvPatients.visibility = View.VISIBLE
                     }
                     mAdapter?.notifyDataSetChanged()
                 } else {
                     Log.d("ERRO GET PATIENTS", "Error getting documents: ", task.exception)
                 }
             }
+    }
+
+    fun goToChooseProcedureScreen(patient: Paciente) {
+       val intent = Intent(this, ChooseProcedureActivity::class.java)
+       val jsonPatient = Gson().toJson(patient)
+        intent.putExtra("PATIENT", jsonPatient)
+       startActivity(intent)
     }
 
     private fun initListeners() {

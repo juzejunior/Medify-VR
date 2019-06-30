@@ -16,15 +16,6 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <ImageButton
-            android:id="@+id/bt_close"
-            android:layout_width="?android:attr/actionBarSize"
-            android:layout_height="?android:attr/actionBarSize"
-            android:contentDescription="closebutton"
-            android:background="#FFFFFF"
-            android:tint="@color/grey_20"
-            app:srcCompat="@drawable/ic_close" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -94,15 +85,14 @@
         android:paddingBottom="20dp"
         android:gravity="center">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_keep"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_rounded_blue"
-            android:paddingLeft="@dimen/spacing_mlarge"
-            android:paddingRight="@dimen/spacing_mlarge"
-            android:text="Continuar!"
-            android:textColor="@android:color/white" />
+        <Button
+                android:id="@+id/bt_keep"
+                android:background="@color/colorPrimary"
+                android:text="Continuar!"
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
+                android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 

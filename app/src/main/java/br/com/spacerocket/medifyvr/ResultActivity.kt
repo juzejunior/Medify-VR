@@ -27,7 +27,7 @@ class ResultActivity : AppCompatActivity() {
         lp.width = WindowManager.LayoutParams.WRAP_CONTENT
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT
 
-        dialog.title.text = "Parabéns você conseguiu coletar "
+        dialog.title.text = "Parabéns"
         dialog.tvTotalPoint.text = intent.getIntExtra("RESULT", 0).toString()+" elementos!"
 
         dialog.bt_keep.setOnClickListener {
